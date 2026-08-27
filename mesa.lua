@@ -1,5 +1,5 @@
 mesa = {}
-tag = "Baranda"
+local tag = "Baranda"
 
 function CrearMesa()
 
