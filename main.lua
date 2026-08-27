@@ -2,7 +2,7 @@ require("mesa")
 require("bolas")
 
 
---bola = {}
+
 
 entidad1 = nil
 entidad2 = nil

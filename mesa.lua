@@ -31,7 +31,9 @@ mesa.b4.acople:setUserData(tag)
 end
 
 function DibujarMesa()
-    love.graphics.setColor(0.6, 0.4, 0.3)
+    love.graphics.setColor(0.1, 0.55, 0.2)
+    love.graphics.rectangle("fill", 0, 0, 650, 650)
+    love.graphics.setColor(0.35, 0.18, 0.05)
     love.graphics.polygon ("fill", mesa.b1.cuerpo:getWorldPoints(mesa.b1.forma:getPoints()))
     love.graphics.polygon ("fill", mesa.b2.cuerpo:getWorldPoints(mesa.b2.forma:getPoints()))
     love.graphics.polygon ("fill", mesa.b3.cuerpo:getWorldPoints(mesa.b3.forma:getPoints()))
