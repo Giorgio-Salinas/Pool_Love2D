@@ -22,7 +22,7 @@ end
 
 function love.load()
     love.physics.setMeter(64)
-    world = love.physics.newWorld(0, 9.81*64, true)
+    world = love.physics.newWorld(0, 0, true)
     world:setCallbacks(inicioContacto, finContacto)
 
     CrearMesa()
@@ -36,13 +36,15 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
     if key == "space" then
-        bolas[1].cuerpo:applyLinearImpulse(0, -500)
-        bolas[2].cuerpo:applyLinearImpulse(110, -500)
-        bolas[3].cuerpo:applyLinearImpulse(220, -500)
-        bolas[4].cuerpo:applyLinearImpulse(330, -500)
-        bolas[5].cuerpo:applyLinearImpulse(220, -500)
-        bolas[6].cuerpo:applyLinearImpulse(660, -500)
-        bolas[7].cuerpo:applyLinearImpulse(70, -500)
+        miBola.cuerpo:applyLinearImpulse(0, -500)
+    end
+end
+
+function love.mousepressed(x, y, button, istouch, presses)
+
+    if button == 1 then
+    MoverMiBola(x,y)
+
     end
 end
 
