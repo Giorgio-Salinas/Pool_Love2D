@@ -1,6 +1,6 @@
 bolas = {}
 miBola = nil
-vel = 400
+vel = 500
 
 local tag = "bolas"
 
@@ -10,8 +10,12 @@ function CrearBola(x, y, r , sprite)
      bola.cuerpo = love.physics.newBody(world, x, y, "dynamic")
     bola.forma = love.physics.newCircleShape(r)
     bola.acople = love.physics.newFixture(bola.cuerpo, bola.forma)
+    bola.acople:setRestitution(0.4)
+    bola.cuerpo:setLinearDamping(0.5)
+    bola.acople:setFriction(0.5)
     bola.acople:setUserData(tag)
     bola.sprite = love.graphics.newImage(sprite)
+    
 
     return bola 
 
@@ -24,7 +28,7 @@ function CargarBolas()
     local cantidad = 7
 
     for i = 1, cantidad do
-        table.insert(bolas, CrearBola(x, y + (45 * i), 20, i..".png"))
+        table.insert(bolas, CrearBola(x, y + (70 * i), 20, i..".png"))
         
     end
 
@@ -44,7 +48,7 @@ function MoverMiBola(x, y)
     if distancia > 0 then
         local impulsoX = (dx / distancia) * vel
         local impulsoY = (dy / distancia) * vel
-        miBola.cuerpo:applyLinearImpulse(impulsoY, impulsoY)
+        miBola.cuerpo:applyLinearImpulse(impulsoX, impulsoY)
     end
 end
 

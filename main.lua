@@ -31,14 +31,8 @@ function love.load()
     
     love.window.setMode(650, 650)
     
-
 end
 
-function love.keypressed(key, scancode, isrepeat)
-    if key == "space" then
-        miBola.cuerpo:applyLinearImpulse(0, -500)
-    end
-end
 
 function love.mousepressed(x, y, button, istouch, presses)
 
