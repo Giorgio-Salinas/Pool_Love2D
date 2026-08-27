@@ -1,8 +1,8 @@
 require("mesa")
+require("bolas")
 
---baranda = {}
---baranda2 = {}
-bola = {}
+
+--bola = {}
 
 entidad1 = nil
 entidad2 = nil
@@ -27,30 +27,22 @@ function love.load()
 
     CrearMesa()
 
-    --[[baranda.cuerpo = love.physics.newBody(world, 650/2, 650-25)
-    baranda.forma = love.physics.newRectangleShape(650, 20)
-    baranda.acople = love.physics.newFixture(baranda.cuerpo, baranda.forma)
-    baranda.acople:setUserData("BARANDA")
-
-    baranda2.cuerpo = love.physics.newBody(world, 650/2, 10)
-    baranda2.forma = love.physics.newRectangleShape(650, 20)
-    baranda2.acople = love.physics.newFixture(baranda2.cuerpo, baranda2.forma)
-    baranda2.acople:setUserData("BARANDA")--]]
-
-
-    bola.cuerpo = love.physics.newBody(world, 650/2, 650/2, "dynamic")
-    bola.forma = love.physics.newCircleShape(20)
-    bola.acople = love.physics.newFixture(bola.cuerpo, bola.forma)
-    bola.acople:setUserData("BOLA")  
-    bola.sprite = love.graphics.newImage("pool_ball_outline_1.png")
+    CargarBolas()
+    
     love.window.setMode(650, 650)
     
 
 end
 
 function love.keypressed(key, scancode, isrepeat)
-    if key == "a" and contacto then
-        bola.cuerpo:applyLinearImpulse(0, -500)
+    if key == "space" then
+        bolas[1].cuerpo:applyLinearImpulse(0, -500)
+        bolas[2].cuerpo:applyLinearImpulse(110, -500)
+        bolas[3].cuerpo:applyLinearImpulse(220, -500)
+        bolas[4].cuerpo:applyLinearImpulse(330, -500)
+        bolas[5].cuerpo:applyLinearImpulse(220, -500)
+        bolas[6].cuerpo:applyLinearImpulse(660, -500)
+        bolas[7].cuerpo:applyLinearImpulse(70, -500)
     end
 end
 
@@ -61,12 +53,8 @@ end
 
 function love.draw()
     DibujarMesa()
-    --[[love.graphics.setColor(0.6, 0.4, 0.3)
-    love.graphics.polygon ("fill", baranda.cuerpo:getWorldPoints(baranda.forma:getPoints()))
-    love.graphics.polygon ("fill", baranda2.cuerpo:getWorldPoints(baranda2.forma:getPoints()))--]]
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.draw (bola.sprite, bola.cuerpo:getX(), bola.cuerpo:getY(), 0, 0.075, 0.075,
-    256, 256)
+
+   DibujarBolas()
 
     love.graphics.setColor(1, 0, 0)
     if contacto then
